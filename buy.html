@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCart - Purchase Page</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F1E9D1; /* Matching Cream Background */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- BOLD MARKER DRAWINGS (Consistent Style) --- */
+        .appliance-drawing {
+            position: absolute;
+            z-index: 1;
+            stroke: #0f2b0d; /* Dark Marker Green */
+            stroke-width: 3.5px; 
+            fill: none;
+        }
+        .mixer-icon { top: 40px; left: 40px; width: 120px; }
+        .fridge-icon { top: 40%; right: 40px; width: 110px; }
+        .washing-machine-icon { bottom: 50px; left: 50px; width: 130px; }
+
+        /* --- PURCHASE CARD --- */
+        .purchase-card {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 50px 40px;
+            border-radius: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            z-index: 10;
+        }
+
+        h2 {
+            color: #1a531f;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        #productDisplay {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-generate { background-color: #28a745; color: white; }
+        .btn-generate:hover { background-color: #218838; }
+
+        .btn-review { background-color: #1a531f; color: white; }
+        .btn-review:hover { background-color: #144018; }
+
+        #tokenDisplay {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1a531f;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <svg class="appliance-drawing mixer-icon" viewBox="0 0 100 100"><path d="M30 80h40v-40h-40zM35 40v-15h30v15M70 50h10v15h-10"/></svg>
+    <svg class="appliance-drawing fridge-icon" viewBox="0 0 100 100"><rect x="25" y="10" width="50" height="80" rx="4"/><line x1="25" y1="40" x2="75" y2="40"/></svg>
+    <svg class="appliance-drawing washing-machine-icon" viewBox="0 0 100 100"><rect x="25" y="20" width="50" height="65" rx="3"/><circle cx="50" cy="55" r="18"/></svg>
+
+    <div class="purchase-card">
+        <h3>Purchase Successfully</h3>
+        <p id="productDisplay">Product: Mouse</p>
+
+        <button class="btn btn-generate" onclick="generateToken()">Generate 7-Digit Token</button>
+        <div id="tokenDisplay"></div>
+        
+        <button class="btn btn-review" onclick="goToReview()">Go to Review</button>
+    </div>
+
+    <script>
+        // Load the product name from store
+        const selectedProduct = localStorage.getItem("product") || "Mouse";
+        document.getElementById("productDisplay").innerText = "Product: " + selectedProduct;
+
+        function generateToken() {
+    // Characters to choose from (Letters and Numbers)
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; 
+    let token = "";
+    
+    // Loop 7 times to build the 7-digit code
+    for (let i = 0; i < 7; i++) {
+        token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    // Save to localStorage for the Review Page to find
+    localStorage.setItem("token", token);
+    
+    // Update the display
+    document.getElementById("tokenDisplay").innerText = "YOUR TOKEN: " + token;
+    alert("Token Generated: " + token);
+}
+        function goToReview() {
+            if (!localStorage.getItem("token")) {
+                alert("Please generate a token first!");
+            } else {
+                window.location.href = "review.html";
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒HomeCart Login</title> 
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* MATCHING THE WARMER CREAM FROM YOUR IMAGE */
+            background-color: #F1E9D1; 
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- BOLD MARKER DRAWINGS (Consistent with Review Page) --- */
+        .appliance-drawing {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            /* Extra Dark Marker Style */
+            stroke: #0f2b0d;
+            stroke-width: 3.5px; 
+            opacity: 1;
+        }
+
+        .mixer-icon { top: 40px; left: 40px; width: 120px; }
+        .fan-icon { top: 30px; left: 30%; width: 150px; }
+        .fridge-icon { top: 40%; right: 40px; width: 110px; }
+        .lamp-icon { bottom: 40px; right: 50px; width: 160px; }
+        .washing-machine-icon { bottom: 50px; left: 50px; width: 130px; }
+
+        .brand-logo {
+            position: absolute;
+            top: 50px;
+            right: 60px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1a531f;
+            z-index: 10;
+        }
+
+        /* Login Card */
+        .login-card {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 60px 45px;
+            border-radius: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .login-card h2 {
+            color: #1a531f;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid transparent;
+            border-radius: 40px;
+            background-color: #f4f4f4;
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border: 2px solid #1a531f;
+            background-color: #fff;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background-color: #1a531f;
+            color: #ffffff;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover { 
+            background-color: #144018; 
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <svg class="appliance-drawing mixer-icon" viewBox="0 0 100 100" fill="none">
+        <path d="M30 80h40v-40h-40zM35 40v-15h30v15M70 50h10v15h-10"/>
+    </svg>
+
+    <svg class="appliance-drawing fan-icon" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="8"/>
+        <path d="M50 42V10M58 50h32M50 58v32M42 50H10"/>
+        <path d="M45 10h10M90 45v10M45 90h10M10 45v10"/>
+    </svg>
+
+    <svg class="appliance-drawing fridge-icon" viewBox="0 0 100 100" fill="none">
+        <rect x="25" y="10" width="50" height="80" rx="4"/>
+        <line x1="25" y1="40" x2="75" y2="40"/>
+        <line x1="32" y1="20" x2="32" y2="30"/>
+        <line x1="32" y1="50" x2="32" y2="70"/>
+    </svg>
+
+    <svg class="appliance-drawing washing-machine-icon" viewBox="0 0 100 100" fill="none">
+        <rect x="25" y="20" width="50" height="65" rx="3"/>
+        <circle cx="50" cy="55" r="18"/>
+        <path d="M30 30h10M60 30h10"/>
+    </svg>
+
+    <svg class="appliance-drawing lamp-icon" viewBox="0 0 100 100" fill="none">
+        <path d="M30 35h40l-10-25h-20zM50 35v55M35 90h30"/>
+    </svg>
+
+    <div class="brand-logo">HomeCart</div>
+
+    <div class="login-card">
+        <h2>LOGIN</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="homecart@gmail.com" required>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn-login" id="loginBtn">LOGIN</button>
+        </form>
+    </div>
+
+   <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+
+        loginForm.addEventListener('submit', function(e) {
+            // 1. Prevent the page from refreshing immediately
+            e.preventDefault();
+
+            // 2. Visual feedback on the button
+            loginBtn.innerText = "LOGGING IN...";
+            loginBtn.style.opacity = "0.7";
+            loginBtn.disabled = true;
+
+            // 3. The logic for the pop-up and redirection
+            setTimeout(() => {
+                // SHOW THE SUCCESS MESSAGE POP-UP
+                alert("Login Successful! Welcome to HomeCart.");
+                
+                // AFTER USER CLICKS 'OK', GO TO STORE
+                window.location.href = "store.html"; 
+            }, 800); 
+        });
+    </script>
+</body>
+</html>

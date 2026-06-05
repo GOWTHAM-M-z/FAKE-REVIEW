@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HomeCart Store</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#e6d2a3;
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    padding:20px;
+}
+
+/* GRID */
+.products{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:15px;
+    padding:20px;
+}
+
+/* CARD */
+.card{
+    background:#f5f0d8;
+    border-radius:20px;
+    padding:12px;
+    border:2px solid #333;
+}
+
+/* IMAGE */
+.card img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:8px;
+    margin-top:6px;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* BUY BUTTON */
+.buy{
+    background:#28a745;
+    color:white;
+}
+
+/* REVIEW BUTTON */
+.review{
+    background:#007bff;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>HomeCart Store</h1>
+
+<div class="products">
+
+<!-- PRODUCT 1 -->
+<div class="card">
+<img src="images/sofa.jpg">
+<h3>Sofa</h3>
+<p>₹12000</p>
+<button class="btn buy" onclick="goToBuy('Sofa')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+<img src="images/laptop.jpg">
+<h3>Laptop</h3>
+<p>₹55000</p>
+<button class="btn buy" onclick="goToBuy('Laptop')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+<img src="images/mouse.jpg">
+<h3>Mouse</h3>
+<p>₹800</p>
+<button class="btn buy" onclick="goToBuy('Mouse')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="card">
+<img src="images/bed.jpg">
+<h3>Bed</h3>
+<p>₹15000</p>
+<button class="btn buy" onclick="goToBuy('Bed')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="card">
+<img src="images/headphone.jpg">
+<h3>Headphone</h3>
+<p>₹2500</p>
+<button class="btn buy" onclick="goToBuy('Headphone')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="card">
+<img src="images/printer.jpg">
+<h3>Printer</h3>
+<p>₹7000</p>
+<button class="btn buy" onclick="goToBuy('Printer')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 7 -->
+<div class="card">
+<img src="images/smartphone.jpg">
+<h3>Smartphone</h3>
+<p>₹20000</p>
+<button class="btn buy" onclick="goToBuy('Smartphone')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 8 -->
+<div class="card">
+<img src="images/smarttv.jpg">
+<h3>Smart TV</h3>
+<p>₹40000</p>
+<button class="btn buy" onclick="goToBuy('Smart TV')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 9 -->
+<div class="card">
+<img src="images/refrigerator.jpg">
+<h3>Refrigerator</h3>
+<p>₹25000</p>
+<button class="btn buy" onclick="goToBuy('Refrigerator')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 10 -->
+<div class="card">
+<img src="images/washingmachine.jpg">
+<h3>Washing Machine</h3>
+<p>₹22000</p>
+<button class="btn buy" onclick="goToBuy('Washing Machine')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 11 -->
+<div class="card">
+<img src="images/camera.jpg">
+<h3>Camera</h3>
+<p>₹30000</p>
+<button class="btn buy" onclick="goToBuy('Camera')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 12 -->
+<div class="card">
+<img src="images/fan.jpg">
+<h3>Fan</h3>
+<p>₹2000</p>
+<button class="btn buy" onclick="goToBuy('Fan')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 13 -->
+<div class="card">
+<img src="images/office-chair.jpg">
+<h3>Office Chair</h3>
+<p>₹5000</p>
+<button class="btn buy" onclick="goToBuy('Chair')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 14 -->
+<div class="card">
+<img src="images/wood-table.jpg">
+<h3>Wood Table</h3>
+<p>₹8000</p>
+<button class="btn buy" onclick="goToBuy('Table')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+<!-- PRODUCT 15 -->
+<div class="card">
+<img src="images/smart-watch.jpg">
+<h3>Smart Watch</h3>
+<p>₹3000</p>
+<button class="btn buy" onclick="goToBuy('Watch')">Buy</button>
+<button class="btn review" onclick="goToReview()">Review</button>
+</div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function goToBuy(product){
+    localStorage.setItem("product", product);
+    window.location.href = "buy.html";
+}
+
+function goToReview(){
+    window.location.href = "review.html";
+}
+</script>
+
+</body>
+</html>
